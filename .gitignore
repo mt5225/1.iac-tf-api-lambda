@@ -1,0 +1,5 @@
+*.backup
+.terraform
+*.lock.hcl
+*.tfstate
+.DS_Store
