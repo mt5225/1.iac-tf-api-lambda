@@ -9,7 +9,7 @@ module "acmelambda" {
   runtime        = "python3.8"
   create_package = false
   s3_existing_package = {
-    bucket = "${var.region}_mt5225-tf-lambda"
+    bucket = "${var.region}-mt5225-tf-lambda"
     key    = "main.zip"
   }
 }
