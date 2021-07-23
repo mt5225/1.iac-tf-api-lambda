@@ -68,7 +68,7 @@ resource "aws_lambda_permission" "apigw" {
   action        = "lambda:InvokeFunction"
   function_name = module.acmelambda.lambda_function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "arn:aws:apigateway:us-west-2::/apis/*"
+  source_arn    = "arn:aws:apigateway:${var.region}::/apis/*"
 }
 
 output "gw_url" {
