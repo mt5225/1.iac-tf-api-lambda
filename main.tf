@@ -3,7 +3,7 @@
 module "acmelambda" {
   source = "./modules/terraform-aws-lambda-master"
 
-  function_name  = "acmelambda"
+  function_name  = "${var.region}_acmelambda"
   description    = "acme lambda function"
   handler        = "main.lambda_handler"
   runtime        = "python3.8"
@@ -19,7 +19,7 @@ module "acmelambda" {
 ### log group
 module "acmelog" {
   source = "./modules/aws-cloudwatch-log"
-  name   = "acmelog"
+  name   = "${var.region}_acmelog"
   tags = {
     Name = "acmelog"
     Role = "apigw-log"
@@ -30,7 +30,7 @@ module "acmelog" {
 module "acmeapigw" {
   source = "./modules/terraform-aws-apigateway-v2"
 
-  name          = "acme-apigw"
+  name          = "${var.region}_acme-apigw"
   description   = "Acme HTTP API Gateway"
   protocol_type = "HTTP"
   cors_configuration = {
